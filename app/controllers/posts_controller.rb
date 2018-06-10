@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def show
@@ -14,12 +14,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    if @post = Post.create(post_params)
-    flash[:success] = "Your post has been created!"
-    redirect_to posts_path
+    @post = current_user.posts.build(post_params)
+
+    if @post.save
+      flash[:success] = "Your post has been created!"
+      redirect_to posts_path
     else
-    flash.now[:alert] = "Your new post couldn't be created!  Please check the form."
-    render :new
+      flash[:alert] = "Your new post couldn't be created!  Please check the form."
+      render :new
     end
   end
 
