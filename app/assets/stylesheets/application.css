@@ -94,3 +94,43 @@
    margin-top: 20px;
    margin-bottom: 40px;
  }
+
+/* Post */
+
+.user-name-comment {
+
+  font-size: 15px;
+  color: #125688;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.comment-content {
+  padding: 10px;
+
+}
+
+.caption {
+  padding: 10px;
+
+}
+
+.user-name {
+
+  font-size: 13px;
+  color: #696969;
+  padding: 5px;
+  font-weight: 400;
+}
+
+/* Comments */
+
+.arthur_form, select {
+    width: 610px;
+    padding: 15px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
