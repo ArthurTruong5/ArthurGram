@@ -10,10 +10,10 @@
       <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
     </div>
     <div class="post-bottom">
-        <div class="user-name-comment">
-          <%= post.user.user_name %>
-                </div>
-            <div class="caption">
+      <div class="user-name-comment">
+        <%= post.user.user_name %>
+      </div>
+      <div class="caption">
         <%= post.caption %>
       </div>
       <% if post.comments %>
@@ -27,22 +27,22 @@
             </div>
             <% if comment.user == current_user %>
               <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fas fa-trash-alt fa-3x"></i>
-              <% end %>
+              <i class="fas fa-trash-alt fa-2x" style="padding: 5px; float: right; margin-top: -36px;"></i>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-    <div class="comment-like-form row">
-      <div class="like-button col-sm-1">
+    <% end %>
+  </div>
+  <div class="comment-like-form row">
+    <div class="like-button col-sm-1">
       <i class="far fa-heart fa-2x"></i>
       <div class="comment-form col-sm-11">
-        <%= simple_form_for [post, post.comments.new] do |f| %>
-          <%= f.text_field :content, class: 'arthur_form', placeholder: 'Add a comment...' %>
-          <%= f.button :submit, class: "btn btn-primary padding: 50px;" %>
-        <% end %>
-      </div>
+        <%= simple_form_for ([post, post.comments.new], remote: true) do |f| %>
+        <%= f.text_field :content, class: 'arthur_form', placeholder: 'Add a comment...' %>
+        <%= f.button :submit, class: "btn btn-primary padding: 50px;" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

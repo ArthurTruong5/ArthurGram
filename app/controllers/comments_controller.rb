@@ -2,17 +2,22 @@ class CommentsController < ApplicationController
 before_action :set_post
 
     def create
-      @comment = @post.comments.build(comment_params)
+      @comment = @post.comments.new(comment_params)
       @comment.user_id = current_user.id
 
 
       if @comment.save
         flash[:success] = "Comment succesfully created."
-        redirect_to post_index_path
+        respond_to do |format|
+        format.html { redirect_to post_index_path }
+        format.js
+        end
       else
         flash[:alert] = "Check the comment form, something went horribly wrong."
-        redirect_to post_index_path
-
+        respond_to do |format|
+        format.html { redirect_to post_index_path }
+        format.js
+        end
       end
     end
 
