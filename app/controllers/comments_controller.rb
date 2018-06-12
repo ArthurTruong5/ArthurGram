@@ -7,17 +7,15 @@ before_action :set_post
 
 
       if @comment.save
-        flash[:success] = "Comment succesfully created."
+        logger.info"test"
         respond_to do |format|
-        format.html { redirect_to post_index_path }
+        format.html { redirect_to post_index_path, anchor: @post }
         format.js
+        logger.info"test"
         end
       else
         flash[:alert] = "Check the comment form, something went horribly wrong."
-        respond_to do |format|
-        format.html { redirect_to post_index_path }
-        format.js
-        end
+        render post_index_path
       end
     end
 
