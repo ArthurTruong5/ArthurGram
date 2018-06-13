@@ -14,7 +14,7 @@
  */
 
  body {
-   background-color: #fafafa;
+   background-color: pink;
    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
  }
 
@@ -136,6 +136,21 @@
 }
 
 /*==================================================
+=                   Captions
+==================================================*/
+
+
+.caption-content {
+
+  padding: 5px;
+
+}
+
+
+
+
+
+/*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
 
@@ -193,3 +208,7 @@
       .arthur_form, select {
         width: 100%;
     }
+
+.time_ago {
+  padding: 10px;
+}

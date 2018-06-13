@@ -4,3 +4,10 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+
+body{
+  background-image: url('background1.jpg');
+  background-size: cover;
+
+
+}

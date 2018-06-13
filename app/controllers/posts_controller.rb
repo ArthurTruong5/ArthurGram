@@ -23,6 +23,7 @@ class PostsController < ApplicationController
       flash[:alert] = "Your new post couldn't be created!  Please check the form."
       render :new
     end
+    redirect_to posts_path
   end
 
   def edit

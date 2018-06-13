@@ -5,13 +5,10 @@ before_action :set_post
       @comment = @post.comments.new(comment_params)
       @comment.user_id = current_user.id
 
-
       if @comment.save
-        logger.info"test"
         respond_to do |format|
-        format.html { redirect_to post_index_path, anchor: @post }
+        format.html { redirect_to post_index_path }
         format.js
-        logger.info"test"
         end
       else
         flash[:alert] = "Check the comment form, something went horribly wrong."
@@ -21,11 +18,17 @@ before_action :set_post
 
 
     def destroy
-    @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    flash[:alert] = "Comment Deleted."
-    redirect_to post_index_path
+      @comment = @post.comments.find(params[:id])
+
+      if @comment.user_id == current_user.id
+        @comment.delete
+        respond_to do |format|
+          format.html { redirect_to root_path }
+          format.js
+        end
+      end
     end
+
 
   private
 
